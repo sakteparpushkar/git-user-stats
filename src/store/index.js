@@ -26,7 +26,7 @@ const store = createStore({
                 console.log('Get users API returns with error', error);
             });
         },
-        async getSearchedUser({ commit, state }, searchVal) {
+        async getSearchedUser({ commit }, searchVal) {
             // const result = state.userList.filter((user) => {
             //     return user.login.toLowerCase().includes(searchVal.toLowerCase())
             // });

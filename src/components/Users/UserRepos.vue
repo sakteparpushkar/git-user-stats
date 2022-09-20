@@ -1,7 +1,7 @@
 <template>
   <div class="mrg-20">
     <table class="mrg-tp-20">
-      <tr v-for="repo in props.repos">
+      <tr v-for="repo in props.repos" :key="repo.id">
         <td>
           <a :href="repo.owner.html_url" target="_blank">{{ repo.name }}</a>
         </td>

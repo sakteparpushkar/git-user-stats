@@ -20,13 +20,13 @@
 </template>
 
 <script setup>
-import { computed, ref } from "vue";
+import { computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useDebounce } from "../../composed/useDebounce";
 
 const route = useRoute();
 const router = useRouter();
-const { searchStr, searchList } = useDebounce(2000, "getSearchedUser");
+const { searchList } = useDebounce(2000, "getSearchedUser");
 
 const isSearchBoxVisible = computed(() => route.fullPath === "/");
 
