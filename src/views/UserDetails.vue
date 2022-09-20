@@ -2,11 +2,8 @@
   <div class="mrg-20">
     <img src="@/assets/back-icon.svg" alt="Back" @click="backToUserPage" />
 
-    <img
-      :src="state.avtar_url"
-      alt="Users Img"
-      class="img"
-    />
+    <img v-if="state.avtar_url" :src="state.avtar_url" alt="Users Img" class="img" />
+    <img v-else src="@/assets/rubber-duck.svg" alt="Users Img" class="img" />
     <h1>{{ route.params.userName }}</h1>
 
     <UserRepos :repos="state.repos" />
@@ -29,11 +26,13 @@ onMounted(() => {
   axios
     .get(`https://api.github.com/users/${route.params.userName}/repos`)
     .then((res) => {
-      state.repos = res.data;
-      state.avtar_url = res.data?.[0].owner.avatar_url || './assets/rubber-duck.svg';
+      state.repos = res?.data;
+      state.avtar_url =
+        res?.data?.[0]?.owner.avatar_url;
+      console.log(state);
     })
     .catch((error) => {
-      console.log('Get Repos API returns with error');
+      console.log("Get Repos API returns with error", error);
     });
 });
 

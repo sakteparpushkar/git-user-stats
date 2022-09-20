@@ -23,7 +23,7 @@ const store = createStore({
                 context.commit('setUser', res.data)
                 return res;
             }).catch((error) => {
-                console.log('Get users API returns with error');
+                console.log('Get users API returns with error', error);
             });
         },
         async getSearchedUser({ commit, state }, searchVal) {
@@ -35,7 +35,7 @@ const store = createStore({
             await axios.get(`https://api.github.com/search/users?q=${searchVal}`).then(res => {
                 commit('setUser', res.data.items)
             }).catch((error) => {
-                console.log('Search users API returns with error');
+                console.log('Search users API returns with error', error);
             });
         },
     }
